@@ -4,8 +4,8 @@ import DateTimePicker from 'react-datetime-picker';
 import 'react-datetime-picker/dist/DateTimePicker.css';
 
 function EventScheduler() {
-  const [ start, setStart ] = useState();
-  const [ end, setEnd ] = useState();
+  const [ start, setStart ] = useState(new Date());
+  const [ end, setEnd ] = useState(new Date());
   const [ eventName, setEventName ] = useState("");
   const [ eventDescription, setEventDescription ] = useState("");
 
@@ -63,27 +63,31 @@ function EventScheduler() {
 
   return (
     <div>
-      <div style={{width: "70%", margin: "30px auto",textAlign:"left"}}>
+      <div className=' mt-[30px] w-[70%] m-auto'>
         {session ?
-          <>
-            <p className=' text-2xl font-bold'>Logged in as {session.user.email}</p>
-            <p>Start of your event: </p>
-            <DateTimePicker onChange={setStart} value={start} />
-            <p>End of your event: </p>
-            <DateTimePicker onChange={setEnd} value={end} />
-            <p>Event name: <input type="text" onChange={(e) => setEventName(e.target.value)} placeholder='Title'/></p>
-            <p>Event description: <input type="text" onChange={(e) => setEventDescription(e.target.value)} placeholder='Description'/></p>
-            <br />
-            <div style={{textAlign:"center"}}>
-              <button onClick={() => createCalendarEvent()}>Create Calendar Event</button>
-              <p></p>
-              <button onClick={() => signOut()}>Sign Out</button>
+          <div>
+            <div className=' bg-purple-300 p-16 rounded-3xl flex-col'>
+              <p className=' text-2xl font-bold'>Logged in as {session.user.email}</p>
+              <div className=' mt-20 py-4 flex justify-start flex-wrap'>
+                <p className=' m-2 p-2 bg-blue-400 rounded-md'>Start of your event: <DateTimePicker onChange={setStart} value={start} className=' bg-blue-300'/></p>
+                <p className=' m-2 p-2 bg-blue-400 rounded-md'>End of your event: <DateTimePicker onChange={setEnd} value={end} className=' bg-blue-300'/></p>
+              </div>
+              <div>
+                <span className=' m-2 p-2 bg-blue-400 rounded-md'>Event name: <input className=' rounded-md ml-1' type="text" onChange={(e) => setEventName(e.target.value)} placeholder=' Title'/></span>
+                <br />
+                <br />
+                <span className=' m-2 p-2 bg-blue-400 rounded-md'>Event description: <input className=' rounded-md ml-1' type="text" onChange={(e) => setEventDescription(e.target.value)} placeholder=' Description'/></span>
+              </div>
+              <div className='flex justify-start mt-6'>
+                <button className='ml-2 p-2 bg-green-400 rounded-md hover:bg-green-500' onClick={() => createCalendarEvent()}>Create Calendar Event</button>
+                <button className=' ml-4 p-2 bg-red-400 rounded-md hover:bg-red-500' onClick={() => signOut()}>Sign Out</button>
+              </div>
             </div>
-          </>
+          </div>
           :
           <>
-            <h2>Not Signed in</h2>
-            <button onClick={() => googleSignIn()}>Sign In With Google</button>
+            <h2 className=' text-3xl font-bold'>Not Signed in</h2>
+            <button className=' mt-4 p-2 bg-yellow-500 rounded-lg' onClick={() => googleSignIn()}>Sign In With Google</button>
           </>
         }
       </div>
