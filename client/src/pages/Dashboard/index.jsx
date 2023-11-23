@@ -8,7 +8,7 @@ const Dashboard =()=>{
     const [auth,setAuth]=useState(false);
     useEffect(()=>{
       console.log(uname);
-      axios.post("http://localhost:3002/todos/",{"ver_name":`${uname}`}).then(res => {
+      axios.post("http://localhost:3002/todos/",{"ver_name":`${uname}`},{withCredentials:true}).then(res => {
          console.log(res.data);
          if(res.data.status == "token"){
             setAuth(true);

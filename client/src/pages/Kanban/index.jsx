@@ -8,9 +8,23 @@ import Inprg from './kanbancomponents/Inprg'
 import Complete from './kanbancomponents/complete'
 import { render } from 'react-dom'
 import {useNavigate} from 'react-dom'
+
 const index = () => {
+  const [auth,setAuth]=useState(false);
     let uname= useParams().username
     const navigate = useNavigate
+    useEffect(()=>{
+      console.log(uname);
+      axios.post("http://localhost:3002/todos/",{"ver_name":`${uname}`},{withCredentials:true}).then(res => {
+         console.log(res.data);
+         if(res.data.status == "token"){
+            setAuth(true);
+         }
+         else{
+            setAuth(false);
+         }
+      })
+    },[uname]);
 
   const chgst = (id,newst)=>{
     event.preventDefault()
@@ -28,6 +42,7 @@ const index = () => {
     setCount(count+1)
     console.log(id,newst)
   }
+
   const [count,setCount] = useState(0)
   const [lst,setLst] = useState([])
 //       { 
@@ -77,20 +92,24 @@ const index = () => {
       
     console.log(lst)
     return (
+      <>
+      {auth ?
         <>
         
-            <Sidebar name={uname}/>
-            <div className="sm:ml-64">
-            <div className="kh"ription>
-            <Tostart todo={lst} change={chgst} count={count} />
-            <Inprg todo={lst} change={chgst} count={count} />
-            <Complete todo={lst} change={chgst} count={count} />
-            </div>
-            </div>
-            
-    </>
+        <Sidebar name={uname}/>
+        <div className="sm:ml-64">
+        <div className="kh">
+        <Tostart todo={lst} change={chgst} count={count} />
+        <Inprg todo={lst} change={chgst} count={count} />
+        <Complete todo={lst} change={chgst} count={count} />
+        </div>
+        </div>
         
-       
+         </>
+    
+    
+     : <><h1>NOT ALLOWED HERE</h1></>}
+    </>
     );
 }
 

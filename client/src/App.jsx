@@ -5,14 +5,13 @@ import Login  from '../src/pages/login';
 import Dashboard from '../src/pages/Dashboard';
 import Todo from '../src/components/Todo';
 import Kanban from '../src/pages/Kanban';
-import event_sch from '../src/pages/event_sch';
 import EventWrap from './components/EventWrap';
+
 function App() {
   
 
   return (
     <>
-      <a className=' m-2 p-2 bg-emerald-700 rounded-md' href='/login/:username/Dashboard/Event_scheduler'>Go to Event Scheduler</a>
       
       <BrowserRouter>
       
@@ -25,6 +24,7 @@ function App() {
         <Route path="/login/:username/Dashboard/todos" Component={Todo}></Route>
         <Route path="/login/:username/Dashboard/Kanban" Component={Kanban}></Route>
         <Route path="/login/:username/Dashboard/Event_scheduler" Component={EventWrap}></Route>
+        
       </Routes>
       </BrowserRouter>
      

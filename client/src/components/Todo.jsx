@@ -12,22 +12,25 @@ const [up,Setup]=useState("");
 const uname=useParams().username;
 const [auth,setAuth]=useState(false);
 useEffect(()=>{
-    axios.post('http://localhost:3002/todos/todos',{"u_name":uname}).then((response)=> Setitems(response.data)).catch((err)=> console.log(err));
-
+  console.log(uname);
+  axios.post("http://localhost:3002/todos/",{"ver_name":`${uname}`},{withCredentials:true}).then(res => {
+     console.log(res.data);
+     if(res.data.status == "token"){
+        setAuth(true);
+     }
+     else{
+        setAuth(false);
+     }
+  })
+},[uname]);
+useEffect(()=>{
+    axios.post('http://localhost:3002/todos/todos',{"u_name":uname},{withCredentials:true}).then((response)=> Setitems(response.data)).catch((err)=> console.log(err));
+    
 },[items,uname]);
 
-    useEffect(()=>{
-      console.log(uname);
-      axios.post("http://localhost:3002/todos/",{"ver_name":`${uname}`}).then(res => {
-         console.log(res.data);
-         if(res.data.status == "token"){
-            setAuth(true);
-         }
-         else{
-            setAuth(false);
-         }
-      })
-    },[uname]);
+
+
+
 let count= items.length;
 console.log(count);
 const handleChange=()=>{
@@ -46,7 +49,7 @@ const handleedit =(id) =>{
 return(<>
 
 
-<Sidebar name={uname}/>
+{auth ?<><Sidebar name={uname}/>
 <div className="p-4 sm:ml-64">
   {edit && <>
   <div className='absolute w-[50%] h-[50%]'>
@@ -138,6 +141,7 @@ return(<>
 
 
 
-</>);
+</> : <><h1>NOT ALLOWED HERE</h1></>}
+</>)
 };
 export default Todo;

@@ -4,6 +4,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const   Login =()=>{
+	
+	
 	const navigate = useNavigate();
 	const [username,Setusername]=useState("");
 	const [password,Setpassword]=useState("");
@@ -43,8 +45,8 @@ const   Login =()=>{
 	<div
 		className="relative overflow-hidden md:flex w-1/2 bg-gradient-to-tr from-blue-800 to-purple-700 i justify-around items-center hidden">
 		<div>
-			<h1 className="text-white font-bold text-4xl font-sans">#UP CAHLLENGE</h1>
-			<p className="text-white mt-1">Be organized on the go without losing focus or your brain cells</p>
+		<h1 className="text-white font-bold text-8xl font-sans">#UP CAHLLENGE</h1>
+			<p className="text-gray-500 mt-1 text-2xl">Be organized on the go without losing focus or your brain cells.....</p>
 			<button type="submit" className="block w-28 bg-white text-indigo-800 mt-4 py-2 rounded-2xl font-bold mb-2">Read More</button>
 		</div>
 		<div className="absolute -bottom-32 -left-40 w-80 h-80 border-4 rounded-full border-opacity-30 border-t-8"></div>
@@ -52,7 +54,7 @@ const   Login =()=>{
 		<div className="absolute -top-40 -right-0 w-80 h-80 border-4 rounded-full border-opacity-30 border-t-8"></div>
 		<div className="absolute -top-20 -right-20 w-80 h-80 border-4 rounded-full border-opacity-30 border-t-8"></div>
 	</div>
-	<div className="flex md:w-1/2 justify-center py-10 items-center bg-white">
+	<div className="flex md:w-1/2 justify-center py-10 items-center bg-white text-center">
 		<form className="bg-white" onSubmit={handleSubmit}>
 			<h1 className="text-gray-800 font-bold text-2xl mb-1">Hello Again!</h1>
 			<p className="text-sm font-normal text-gray-600 mb-7">Welcome Back</p>
@@ -79,7 +81,7 @@ const   Login =()=>{
       </div>                                      
 							<button type="submit" className="block w-full bg-indigo-600 mt-4 py-2 rounded-2xl text-white font-semibold mb-4">Login</button>
 							
-                            <Link to='/Register'><span className="text-md m-4 p-2 rounded-2xl border-2 text-blue-500 hover:text-white hover:bg-green-400 cursor-pointer">don`t have account</span></Link>
+                            <Link to='/Register'><span className="text-md m-4 p-2 rounded-2xl border-2 text-blue-600 hover:text-white hover:bg-indigo-400 cursor-pointer">don`t have account ?</span></Link>
 
 		</form>
 	</div>
