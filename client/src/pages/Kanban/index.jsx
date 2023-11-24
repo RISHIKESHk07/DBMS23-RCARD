@@ -6,6 +6,7 @@ import Tostart from './kanbancomponents/Tostart'
 import axios from 'axios'
 import Inprg from './kanbancomponents/Inprg'
 import Complete from './kanbancomponents/complete'
+import Error404 from "../Error";
 import { render } from 'react-dom'
 import {useNavigate} from 'react-dom'
 
@@ -108,7 +109,7 @@ const index = () => {
          </>
     
     
-     : <><h1>NOT ALLOWED HERE</h1></>}
+     : <><Error404/></>}
     </>
     );
 }

@@ -2,15 +2,20 @@ import axios from 'axios';
 import Sidebar from './sidebar';
 import { useParams } from 'react-router-dom';
 import { useState ,useEffect} from "react";
-
+import SearchButtons from './Searchbuttons';
+import Error404 from '../pages/Error';
 const Todo =()=>{
 const [edit,Setedit]=useState(false);  
 const [items,Setitems]=useState([]);
 const [nitem,Setnitem]=useState("");
 const [tags,Settags]=useState("");
 const [up,Setup]=useState("");
+const [click,setclick]=useState("");
 const uname=useParams().username;
 const [auth,setAuth]=useState(false);
+
+let val=0
+
 useEffect(()=>{
   console.log(uname);
   axios.post("http://localhost:3002/todos/",{"ver_name":`${uname}`},{withCredentials:true}).then(res => {
@@ -22,17 +27,19 @@ useEffect(()=>{
         setAuth(false);
      }
   })
-},[uname]);
+},[]);
+
 useEffect(()=>{
+     
     axios.post('http://localhost:3002/todos/todos',{"u_name":uname},{withCredentials:true}).then((response)=> Setitems(response.data)).catch((err)=> console.log(err));
     
-},[items,uname]);
+},[]);
 
 
 
 
-let count= items.length;
-console.log(count);
+
+
 const handleChange=()=>{
     axios.post('http://localhost:3002/todos/create',{"Title":nitem,"Tags":tags,"uname":uname,"project":"p1"}).then((response)=> console.log(response)).catch((err)=>(err))
    console.log("Success added");
@@ -45,7 +52,10 @@ const handleChange=()=>{
 const handleedit =(id) =>{
   axios.put(`http://localhost:3002/todos/update/`+`${id}`).then((res)=>console.log(res)).catch((err)=>console.log(err));
 }
-
+const handlechange = (e)=>{
+  console.log(e.target.value);
+   axios.post('http://localhost:3002/todos/todos_tags',{"name":uname,"tags":e.target.value},{withCredentials:true}).then((response)=> Setitems(response.data)).catch((err)=> console.log(err)); 
+ }
 return(<>
 
 
@@ -137,11 +147,13 @@ return(<>
          })}
       </div> 
     </div>
+    <SearchButtons name={uname} handle={handlechange}/>
 </div>
 
 
 
-</> : <><h1>NOT ALLOWED HERE</h1></>}
+
+</> : <Error404 />}
 </>)
 };
 export default Todo;

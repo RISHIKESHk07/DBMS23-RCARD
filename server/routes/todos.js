@@ -57,6 +57,24 @@ router.post('/todos',verifyuser,(req,res)=>{
     })
     
  });
+ //get todos updated
+router.post('/todos_tags',(req,res)=>{
+    let tags=req.body.tags;
+    console.log(tags)
+    let name =req.body.name;
+    tags = '%'+tags+'%';
+    const val=[name,tags];
+    console.log(val);
+    console.log("tags where requested and was returned")
+    const sql="SELECT * FROM todo WHERE u_name= ? AND tags LIKE ?";
+    db.query(sql,val,(err,data)=>{
+     if(err) return res.json(err);
+     console.log(data)
+
+     return res.json((data));
+    })
+    
+ });
  //create a todo updated with db
  router.post('/create',(req,res)=>{
     const sql="INSERT INTO todo (t_title,u_name,project,tags,t_id) VALUES (?,?,?,?,NULL) ";
@@ -81,12 +99,16 @@ router.delete('/:id',(req,res)=>{
  })}
  )
  // seraching on tags
-router.get('/tags',(req,res)=>{
+router.post('/tags',(req,res)=>{
     let tags=req.body.tags;
+    let name =req.body.name;
     tags = '%'+tags+'%';
-    const sql="SELECT * FROM todo WHERE tags LIKE ?";
-    db.query(sql,tags,(err,data)=>{
+    const val=[tags,name];
+    console.log(val);
+    const sql="SELECT tags FROM todo WHERE tags LIKE ? AND u_name= ?";
+    db.query(sql,val,(err,data)=>{
         if(err) return res.json(err)
+        console.log(data);
         return res.json((data))
 
 })}

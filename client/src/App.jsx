@@ -5,7 +5,8 @@ import Login  from '../src/pages/login';
 import Dashboard from '../src/pages/Dashboard';
 import Todo from '../src/components/Todo';
 import Kanban from '../src/pages/Kanban';
-import EventWrap from './components/EventWrap';
+import Event_sch from '../src/pages/event_sch';
+import Error404 from './pages/Error';
 
 function App() {
   
@@ -23,8 +24,8 @@ function App() {
         <Route path="/login/:username/Dashboard" Component={Dashboard}></Route>
         <Route path="/login/:username/Dashboard/todos" Component={Todo}></Route>
         <Route path="/login/:username/Dashboard/Kanban" Component={Kanban}></Route>
-        <Route path="/login/:username/Dashboard/Event_scheduler" Component={EventWrap}></Route>
-        
+        <Route path="/login/:username/Dashboard/Event_scheduler" Component={Event_sch}></Route>
+        <Route path="*" Component={Error404}></Route>
       </Routes>
       </BrowserRouter>
      
