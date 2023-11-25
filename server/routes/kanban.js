@@ -5,10 +5,15 @@ const moment = require('moment');
 const router=express.Router();
 
 const db=mysql.createConnection({
+    // host:"localhost",
+    // user:"root",
+    // password:"Password",
+    // database:"project",
+    // multipleStatements:true
     host:"localhost",
     user:"root",
-    password:"Password",
-    database:"project",
+    password:"",
+    database:"trial2",
     multipleStatements:true
 })
 

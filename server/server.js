@@ -18,7 +18,7 @@ app.use(cors(corsOptions))
 app.use('/todos',require('./routes/todos.js'));
 app.use('/kanban',require('./routes/kanban.js'));
 app.use('/events',require('./routes/events.js'));
-
+app.use('/notes',require('./routes/notes.js'));
 
 app.listen(PORT,()=>{console.log(`listening on port ${PORT}`);});
 

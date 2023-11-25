@@ -4,8 +4,8 @@ import Updatetoprg from "./Updatetoprg"
 
 const Inprg = ({todo,change,count}) => {
   return (
-    <div className="stat">
-        <div id="pg" className="ram">
+    <div className="stat bg-slate-500">
+        <div id="pg" className="ram bg-slate-400 p-2 rounded-lg">
             IN PROGRESS
         </div>
         <div className="inertodo">

@@ -95,7 +95,7 @@ function EventScheduler() {
   return (
     <div>
       <Sidebar name={uname} />
-      <div className=' mt-2 ml-[21vw] flex gap-1'>
+      <div className=' ml-[16vw] flex gap-1'>
         <div className=' w-[65%] bg-slate-400 h-screen overflow-scroll rounded-2xl'>
           <p className=' px-4 py-2 font-semibold text-5xl italic'>Your Events</p>
           <div>
@@ -108,7 +108,7 @@ function EventScheduler() {
                     <div className=' flex justify-around'>
                       <p className=' px-2 py-1 rounded-lg bg-blue-500'>From: <span className=' bg-blue-300 rounded-lg px-1'>{item.event_start}</span></p>
                       <p className=' px-2 py-1 rounded-lg bg-blue-500'>To: <span className=' bg-blue-300 rounded-lg px-1'>{item.event_end}</span></p>
-                      <button className=' px-2 py-1 bg-red-400 rounded-lg hover:bg-red-500'>Delete</button>
+                      {/* <button className=' px-2 py-1 bg-red-400 rounded-lg hover:bg-red-500'>Delete</button> */}
                     </div>
                   </div>
                 </div>

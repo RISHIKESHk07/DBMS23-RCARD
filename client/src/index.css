@@ -3,9 +3,9 @@
 @tailwind utilities;
 
 @layer base{
-  body{
+  /* body{
     font-family:'Heebo';
-  }
+  } */
 }
 /* CUSTOM FOR TODOS */
 

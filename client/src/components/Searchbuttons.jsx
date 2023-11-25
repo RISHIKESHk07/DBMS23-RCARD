@@ -17,6 +17,7 @@ const SearchButtons =({name ,handle})=>{
             setlist(response.data);
             /* console.log(list[0]) */
             let array1=[]
+            let unique=[]
             for(let i=0; i<list.length; i++){
                 /* console.log(list[i]) */
                 
@@ -24,17 +25,17 @@ const SearchButtons =({name ,handle})=>{
                     array1.push(tag)
                 }) 
                 if(i == list.length-1){
-                    setarray(array1)
+                    array1.forEach(element => {
+                        if (!unique.includes(element)) {
+                            unique.push(element);
+                        }
+                    });
+                    setarray(unique)
                 }
                 
             }
+            
             /* console.log("this is array",array) */
-            
-           
-            
-            
-            
-             
         }).catch((err)=>{
             console.log(err);
         })
@@ -45,14 +46,13 @@ const SearchButtons =({name ,handle})=>{
   return (
      <>
      {
-        
         array.map((value,key)=>{
             return(
-                <button className="mr-2 p-2 "key={key} value={value} onClick={(e)=>{handle(e)}}>{value}</button>
+                <button className=" text-left bg-slate-300 m-2 p-2 rounded-md hover:bg-slate-500"key={key} value={value} onClick={(e)=>{handle(e)}}>{value}</button>
             )
         })
      }
-     <button className="mr-2 p-2 " value={""} onClick={(e)=>{handle(e)}}>ALL</button>
+     <button className=" text-left bg-slate-300 m-2 p-2 rounded-md hover:bg-slate-500" value={""} onClick={(e)=>{handle(e)}}>ALL</button>
      </>
   )
 }

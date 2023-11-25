@@ -17,10 +17,15 @@ router.use(express.json());
 router.use(cors(corsOptions))
 let ver_name="";
 const db=mysql.createConnection({
+    // host:"localhost",
+    // user:"root",
+    // password:"Password",
+    // database:"project",
+    // multipleStatements:true
     host:"localhost",
     user:"root",
-    password:"Password",
-    database:"project",
+    password:"",
+    database:"trial2",
     multipleStatements:true
 })
 const verifyuser=(req,res,next) => {
