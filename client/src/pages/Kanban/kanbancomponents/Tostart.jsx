@@ -4,9 +4,9 @@ import Updatetost from "./updatetost"
 const tostart = ({todo,change}) => {
     console.log(todo)
   return (
-    <div id="tostartlist" className="stat">
+    <div id="tostartlist" className="stat bg-slate-500">
             
-            <div id="st" className="ram">
+            <div id="st" className="ram bg-slate-400 p-2 rounded-lg">
             TO START
             </div>
         <div className="inertodo">

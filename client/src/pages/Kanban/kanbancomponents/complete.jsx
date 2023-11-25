@@ -3,8 +3,8 @@ import { useState } from "react"
 import Updatetocom from "./Updatetocom"
 const complete = ({todo,change,count}) => {
   return (
-    <div className="stat">
-        <div id="co" className="ram">
+    <div className="stat bg-slate-500">
+        <div id="co" className="ram bg-slate-400 p-2 rounded-lg">
             COMPLETE
         </div>
         <div className="inertodo">

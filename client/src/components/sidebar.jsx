@@ -40,7 +40,7 @@ const Sidebar =({name})=>{
           <ul className="space-y-2 font-medium">
             <li>
               <a
-                href="#"
+                href={`/login/${name}/Dashboard`}
                 className="flex items-center p-2 text-gray-900 roundedLg dark:textWhite hover:bg-gray-100 dark:hover:bg-gray-700 group"
               >
                 <svg
